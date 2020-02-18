@@ -92,6 +92,13 @@ def markPurchasedByUser(app_id, user_id, num_seconds):
 app = Flask(__name__)
 api = Api(app)
 
+@app.route('/')
+def url_test():
+    return '\n'.join([
+        request.environ['wsgi.url_scheme'],
+        url_for('login_google', _external=True),
+    ]) + '\n'
+
 ################# LOGIN ##########################
 
 # This should probably use flask.session, but lets just hack this in memory for now
